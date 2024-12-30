@@ -1,0 +1,25 @@
+<div class="flightCard border border-dark">
+  <img [src]="flight.allJourney.flights[0]?.flightAirline?.airlineLogo" />
+  <span>{{ flight.allJourney.flights[0]?.flightAirline?.airlineName }}</span>
+  <span>{{ flight.allJourney.flights[0]?.flightAirline?.airlineCode }}</span>
+  <p>{{ flight.deptDate }}</p>
+  <P>{{
+    flight.allJourney.flights[0]?.flightDTO[0]?.departureTerminalAirport
+      .cityName
+  }}</P>
+  <p>{{ flight.cabinClass }}</p>
+  <P>{{ flight.arrivalDate }}</P>
+  <P>{{
+    flight.allJourney.flights[0]?.flightDTO[0]?.arrivalTerminalAirport.cityName
+  }}</P>
+  <p>total duration {{ flight.totalDuration }}</p>
+  <p>{{ flight.allJourney.flights[0].stopsNum }}</p>
+  <p>{{ flight.isRefundable }}</p>
+  <p>{{ flight.itinTotalFare.amount }}</p>
+  <button
+    (click)="goToFlightDetails(flight.sequenceNum)"
+    class="btn btn-primary"
+  >
+    More Details
+  </button>
+</div>
