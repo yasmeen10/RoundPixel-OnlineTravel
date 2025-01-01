@@ -1,0 +1,15 @@
+.btn {
+  width: 100%; /* Make the button stretch across the card */
+  padding: 10px; /* Add padding for a better button size */
+  font-size: 16px; /* Increase button text size */
+  background-color: #d82a4e; /* Primary button color */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded button corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #c21838; /* Darker shade on hover */
+}

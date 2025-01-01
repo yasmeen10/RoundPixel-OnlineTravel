@@ -22,27 +22,8 @@ export class FlightDetailsComponent implements OnInit {
       if (flights.length > 0) {
         this.flight =
           this.flightsService.getFlightBySequenceNumServices(flightId);
-        console.log(this.flight);
       }
     });
+    console.log(this.flight);
   }
-  // ngOnInit(): void {
-  //   const flightId = this.activatedRouter.snapshot.paramMap.get('id');
-  //   this.flightsService.getAllFlights(); // Ensure flights are loaded
-  //   this.getFlightBySequenceNum(flightId).subscribe((flight) => {
-  //     this.flight = flight;
-  //     console.log(this.flight);
-  //   });
-  // }
-
-  // getFlightBySequenceNum(flightId: any) {
-  //   return this.flightsService.allflights.pipe(
-  //     map((flights: any) => {
-  //       if (flights.length > 0) {
-  //         return this.flightsService.getFlightBySequenceNumServices(flightId);
-  //       }
-  //       return null;
-  //     })
-  //   );
-  // }
 }

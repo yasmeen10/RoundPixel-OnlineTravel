@@ -1,1 +1,94 @@
-<p>filter works!</p>
+<!-- Sidebar Toggle Button -->
+<button
+  class="mat-icon-button"
+  *ngIf="isSidebarOpen == false"
+  mat-icon-button
+  (click)="toggleSidebar()"
+>
+  <mat-icon>menu</mat-icon>
+</button>
+
+<!-- Sidebar -->
+<div class="sidebar" [class.open]="isSidebarOpen">
+  <div class="sidebar-content">
+    <button class="close-btn" (click)="toggleSidebar()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <mat-form-field class="custom-field example-full-width">
+      <mat-label style="color: #d82a4e">Search for Airline</mat-label>
+      <input
+        type="text"
+        matInput
+        (input)="onSearchInputChange()"
+        [(ngModel)]="searchInput"
+        [matAutocomplete]="auto"
+        appPreventArabic
+      />
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="onSelectionChange($event)"
+      >
+        <mat-option *ngFor="let airline of filteredAirlines" [value]="airline">
+          {{ airline }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <div class="filter-price">
+      <span class="filter">Price</span>
+      <div class="price-range">
+        <mat-slider
+          [min]="minPrice"
+          [max]="maxPrice"
+          (change)="onPriceChange()"
+          style="width: 95%"
+        >
+          <input matSliderStartThumb [(ngModel)]="minPrice" />
+          <input matSliderEndThumb [(ngModel)]="maxPrice" />
+        </mat-slider>
+        <div class="price">
+          <span class="price-min">{{
+            minPrice | currencyConverter : "EGP"
+          }}</span>
+          <span class="price-max">{{
+            maxPrice | currencyConverter : "EGP"
+          }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-stop">
+      <span class="filter">Stops</span>
+      <div>
+        <label style="color: #878787; font-size: 16px">Select an option:</label>
+        <mat-radio-group
+          [(ngModel)]="stopSelectedOption"
+          (change)="onStopChange()"
+        >
+          <mat-radio-button *ngFor="let option of stopOptions" [value]="option">
+            {{ option }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="filter-refundable">
+      <span class="filter">Refundable</span>
+      <div>
+        <label style="color: #878787; font-size: 16px">Select an option:</label>
+        <mat-radio-group
+          [(ngModel)]="refundableSelectedOption"
+          (change)="onRefundableChange()"
+        >
+          <mat-radio-button
+            *ngFor="let option of refundableOptions"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+</div>

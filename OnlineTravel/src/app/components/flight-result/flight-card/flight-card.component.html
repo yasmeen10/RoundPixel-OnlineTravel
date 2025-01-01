@@ -1,25 +1,100 @@
-<div class="flightCard border border-dark">
-  <img [src]="flight.allJourney.flights[0]?.flightAirline?.airlineLogo" />
-  <span>{{ flight.allJourney.flights[0]?.flightAirline?.airlineName }}</span>
-  <span>{{ flight.allJourney.flights[0]?.flightAirline?.airlineCode }}</span>
-  <p>{{ flight.deptDate }}</p>
-  <P>{{
-    flight.allJourney.flights[0]?.flightDTO[0]?.departureTerminalAirport
-      .cityName
-  }}</P>
-  <p>{{ flight.cabinClass }}</p>
-  <P>{{ flight.arrivalDate }}</P>
-  <P>{{
-    flight.allJourney.flights[0]?.flightDTO[0]?.arrivalTerminalAirport.cityName
-  }}</P>
-  <p>total duration {{ flight.totalDuration }}</p>
-  <p>{{ flight.allJourney.flights[0].stopsNum }}</p>
-  <p>{{ flight.isRefundable }}</p>
-  <p>{{ flight.itinTotalFare.amount }}</p>
-  <button
-    (click)="goToFlightDetails(flight.sequenceNum)"
-    class="btn btn-primary"
-  >
-    More Details
-  </button>
+<div class="flightCard p-3">
+  <div class="row">
+    <!-- Airline and Price Section -->
+    <div
+      class="col-12 col-md-6 d-flex justify-content-between align-items-center w-100"
+    >
+      <div class="airline d-flex">
+        <img
+          [src]="flight.allJourney.flights[0]?.flightAirline?.airlineLogo"
+          class="img-fluid"
+        />
+        <div class="ml-3">
+          <span>{{
+            flight.allJourney.flights[0]?.flightAirline?.airlineName
+          }}</span>
+          <span>{{
+            flight.allJourney.flights[0]?.flightAirline?.airlineCode
+          }}</span>
+        </div>
+      </div>
+      <div>
+        <p class="text-danger" style="font-size: 20px">
+          {{ flight.itinTotalFare.amount | currencyConverter : "EGP" }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Time and Duration Section -->
+    <div class="col-12 col-md-6 w-100">
+      <div class="row">
+        <div
+          class="col-12 col-md-4 d-flex flex-column align-content-center justify-content-center"
+        >
+          <p>{{ flight.deptDate | dateFormater }}</p>
+          <p>
+            {{
+              flight.allJourney.flights[0]?.flightDTO[0]
+                ?.departureTerminalAirport.cityName
+            }}
+          </p>
+        </div>
+        <div
+          class="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center flight-duration"
+        >
+          <p class="text-danger">Total Duration:</p>
+          <p class="text-muted">{{ flight.totalDuration | timeConverter }}</p>
+          <p class="text-muted">
+            {{ flight.allJourney.flights[0].stopsNum }} Stops
+          </p>
+        </div>
+        <div
+          class="col-12 col-md-4 d-flex flex-column justify-content-center align-items-end"
+        >
+          <p>{{ flight.arrivalDate | dateFormater }}</p>
+          <p>
+            {{
+              flight.allJourney.flights[0]?.flightDTO[0]?.arrivalTerminalAirport
+                .cityName
+            }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flight Class and Refundable Info -->
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="d-flex">
+        <p class="text-danger mr-2">Class:</p>
+        <p class="text-muted">{{ flight.cabinClass }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="d-flex">
+        <p class="text-danger mr-2">Refundable:</p>
+        <p class="text-muted">
+          {{ flight.isRefundable ? "Refundable" : "Non-Refundable" }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="d-flex justify-content-end gap-2 mt-3">
+    <button
+      (click)="goToFlightDetails(flight.sequenceNum)"
+      class="btn btn-primary"
+    >
+      More Details
+    </button>
+    <div style="width: 20%">
+      <app-booking-btn></app-booking-btn>
+    </div>
+  </div>
 </div>

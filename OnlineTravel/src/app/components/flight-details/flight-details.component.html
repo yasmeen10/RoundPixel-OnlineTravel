@@ -1,1 +1,76 @@
-<p>flight-details works!</p>
+<div class="container py-5">
+  <div class="row">
+    <!-- Flight Details Column -->
+    <div class="col-md-12 col-sm-12">
+      <div class="card shadow-sm rounded p-4 border-0">
+        <!-- Airline Name and Logo Side by Side -->
+        <div class="mb-3 d-flex align-items-center justify-content-between">
+          <div class="mb-3 d-flex align-items-center gap-4">
+            <img
+              [src]="flight.allJourney.flights[0]?.flightAirline?.airlineLogo"
+              class="img-fluid rounded mr-3"
+              alt="Airline Logo"
+              style="width: 50px; height: 50px; object-fit: contain"
+            />
+            <div>
+              <h5 class="text-dark font-weight-bold fs-6">
+                {{ flight.allJourney.flights[0]?.flightAirline?.airlineName }}
+              </h5>
+              <p class="text-muted fs-6">
+                {{
+                  flight.allJourney.flights[0]?.flightAirline?.airlineCode +
+                    -flight.baggageInformation[0]?.flightNum
+                }}
+              </p>
+            </div>
+          </div>
+          <div>
+            <p class="fs-6" style="color: #d82a4e; font-weight: bold">
+              {{ flight.itinTotalFare.amount | currencyConverter : "EGP" }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Flight Dates and Locations -->
+        <div class="mb-3">
+          <div class="row">
+            <div class="col-md-4 col-sm-3">
+              <p class="font-weight-bold">Departure</p>
+              <p>{{ flight.deptDate | dateFormater }}</p>
+              <p>
+                {{
+                  flight.allJourney.flights[0]?.flightDTO[0]
+                    ?.departureTerminalAirport.cityName
+                }}
+              </p>
+            </div>
+            <div class="col-md-4 col-sm-3">
+              <p class="text-danger">Total Duration:</p>
+              <p class="text-muted">
+                {{ flight.totalDuration | timeConverter }}
+              </p>
+              <p class="text-muted">
+                {{ flight.allJourney.flights[0].stopsNum }} Stops
+              </p>
+            </div>
+            <div class="col-md-4 col-sm-3">
+              <p class="font-weight-bold">Arrival</p>
+              <p>{{ flight.arrivalDate | dateFormater }}</p>
+              <p>
+                {{
+                  flight.allJourney.flights[0]?.flightDTO[0]
+                    ?.arrivalTerminalAirport.cityName
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Book Flight Button -->
+        <div class="w-25 align-self-end">
+          <app-booking-btn></app-booking-btn>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

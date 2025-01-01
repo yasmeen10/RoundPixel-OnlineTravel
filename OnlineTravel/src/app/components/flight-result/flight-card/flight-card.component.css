@@ -1,4 +1,87 @@
 .flightCard {
-  width: 80%;
-  margin: 10px auto;
+  width: 80%; /* Fixed width, adjust as needed */
+  border: 1px solid #ddd; /* Light border for card */
+  border-radius: 10px; /* Rounded corners */
+  background-color: #fff; /* White background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 20px; /* Internal padding for content */
+  margin: 15px auto; /* Spacing around the card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.flightCard:hover {
+  transform: translateY(-5px); /* Lift card effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+.airline {
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flightCard img {
+  width: 15%; /* Ensure the image fits the card width */
+  height: auto; /* Maintain image aspect ratio */
+  border-radius: 5px; /* Rounded image corners */
+  margin-bottom: 15px; /* Space below image */
+}
+
+.flightCard span,
+.flightCard p {
+  font-size: 14px;
+  margin: 5px 0;
+  font-weight: 600;
+  color: #333;
+  display: block;
+}
+
+.flightCard p {
+  font-weight: 600; /* Make the text bolder for emphasis */
+}
+
+.flightCard .btn {
+  width: 20%; /* Make the button stretch across the card */
+  padding: 10px; /* Add padding for a better button size */
+  font-size: 16px; /* Increase button text size */
+  background-color: #d82a4e; /* Primary button color */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded button corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth button hover effect */
+}
+
+.flightCard .btn:hover {
+  background-color: #c21838; /* Darker shade on hover */
+}
+
+.flightCard .flight-duration {
+  font-size: 16px;
+  font-weight: 500;
+  color: #d82a4e; /* Highlight the total duration */
+}
+
+.time div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.airline-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.class {
+  display: flex;
+  align-items: center;
 }
