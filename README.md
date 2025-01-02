@@ -21,4 +21,4 @@ This is an Angular-based flight booking application that allows users to search 
 
 ## Live Demo
 
-https://round-pixel-online-travel-oj64hqd24-yasmeen-walids-projects.vercel.app
+https://round-pixel-online-travel.vercel.app/
