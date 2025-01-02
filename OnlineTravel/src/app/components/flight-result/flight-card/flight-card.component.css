@@ -47,7 +47,7 @@
 }
 
 .flightCard .btn {
-  width: 20%; /* Make the button stretch across the card */
+  width: 100%; /* Make the button stretch across the card */
   padding: 10px; /* Add padding for a better button size */
   font-size: 16px; /* Increase button text size */
   background-color: #d82a4e; /* Primary button color */

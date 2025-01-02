@@ -6,12 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { FlightResultComponent } from './components/flight-result/flight-result.component';
-import { SelectedFlightComponent } from './bonus/selected-flight/selected-flight.component';
 import { FilterComponent } from './components/flight-result/filter/filter.component';
 import { FlightCardComponent } from './components/flight-result/flight-card/flight-card.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlightDetailsComponent } from './components/flight-details/flight-details.component';
+import { FlightDetailsComponent } from './bonus/flight-details/flight-details.component';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -26,13 +25,19 @@ import { BookingBtnComponent } from './components/booking-btn/booking-btn.compon
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { PreventArabicDirective } from './directives/prevent-arabic.directive';
 import { CurrencyConverterPipe } from './pipes/currency-converter.pipe';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { LanguageButtonComponent } from './components/language-button/language-button.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FlightResultComponent,
-    SelectedFlightComponent,
     FilterComponent,
     FlightCardComponent,
     FlightDetailsComponent,
@@ -43,6 +48,7 @@ import { CurrencyConverterPipe } from './pipes/currency-converter.pipe';
     WelcomePageComponent,
     PreventArabicDirective,
     CurrencyConverterPipe,
+    LanguageButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +64,13 @@ import { CurrencyConverterPipe } from './pipes/currency-converter.pipe';
     MatIconModule,
     MatAutocompleteModule,
     MatDialogModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   exports: [MatRadioModule, MatSliderModule],
   providers: [],

@@ -24,6 +24,5 @@ export class FlightDetailsComponent implements OnInit {
           this.flightsService.getFlightBySequenceNumServices(flightId);
       }
     });
-    console.log(this.flight);
   }
 }

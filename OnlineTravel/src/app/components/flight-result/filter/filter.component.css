@@ -8,6 +8,7 @@
   transition: left 0.3s ease;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000; /* Ensure it's on top of other content */
 }
 
 .sidebar-content {
@@ -15,7 +16,6 @@
   height: 100vh;
   background-color: white;
   overflow-y: auto; /* Enables vertical scrolling */
-  overflow-x: hidden;
   padding: 20px;
 }
 
@@ -33,6 +33,26 @@
   border-radius: 2px;
   background-color: #d82a4e;
   color: white;
+  /* Initially hidden for larger screens */
+}
+
+/* Show toggle button on small screens */
+@media (max-width: 768px) {
+  .mat-icon-button {
+    display: block; /* Show toggle button on small screens */
+  }
+
+  .sidebar-content {
+    width: 80%;
+  }
+
+  .sidebar {
+    left: -100%; /* Sidebar hidden on mobile by default */
+  }
+
+  .sidebar.open {
+    left: 0; /* Sidebar visible on mobile */
+  }
 }
 
 /* Additional Styles */
@@ -42,10 +62,10 @@
 }
 
 .filter-price,
-.filter-stop,
 .filter-stop {
   margin: 30px 0px;
 }
+
 .filter-price .price-range {
   font-size: 24px;
 }

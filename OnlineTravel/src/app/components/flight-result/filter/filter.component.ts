@@ -12,8 +12,8 @@ export class FilterComponent implements OnInit {
   allAirlines: any[] = [];
   filteredAirlines: any[] = [];
   searchInput: string = '';
-  stopOptions = ['All', 'Direct', 'One Stop'];
-  refundableOptions = ['All', 'Refundable', 'Non-Refundable'];
+  stopOptions = ['ALL', 'DIRECT', 'ONESTOP'];
+  refundableOptions = ['ALL', 'REFUNDABLE', 'NON-REFUNDABLE'];
   stopSelectedOption: string = 'All';
   refundableSelectedOption: string = 'All';
   minPrice: number = 0;
@@ -45,9 +45,7 @@ export class FilterComponent implements OnInit {
     });
 
     // Subscribe to filtered flights to observe any changes
-    this.flightsService.filteredFlights.subscribe((flights) => {
-      console.log('Filtered Flights:', flights);
-    });
+    this.flightsService.filteredFlights.subscribe((flights) => {});
   }
 
   toggleSidebar() {
@@ -62,7 +60,6 @@ export class FilterComponent implements OnInit {
   }
 
   onSelectionChange(event: any) {
-    console.log(event.option.value);
     const selectedAirline = event.option.value;
     this.filters.airlineName = selectedAirline.toLowerCase();
     this.flightsService.updateFilter({ airlineName: this.filters.airlineName });

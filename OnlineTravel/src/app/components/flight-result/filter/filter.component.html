@@ -1,7 +1,7 @@
 <!-- Sidebar Toggle Button -->
 <button
   class="mat-icon-button"
-  *ngIf="isSidebarOpen == false"
+  *ngIf="!isSidebarOpen"
   mat-icon-button
   (click)="toggleSidebar()"
 >
@@ -15,8 +15,11 @@
       <i class="fa-solid fa-xmark"></i>
     </button>
 
+    <!-- Search Field -->
     <mat-form-field class="custom-field example-full-width">
-      <mat-label style="color: #d82a4e">Search for Airline</mat-label>
+      <mat-label style="color: #d82a4e">{{
+        "SEARCHFORAIRLINE" | translate
+      }}</mat-label>
       <input
         type="text"
         matInput
@@ -35,8 +38,9 @@
       </mat-autocomplete>
     </mat-form-field>
 
+    <!-- Price Filter -->
     <div class="filter-price">
-      <span class="filter">Price</span>
+      <span class="filter">{{ "PRICE" | translate }}</span>
       <div class="price-range">
         <mat-slider
           [min]="minPrice"
@@ -58,25 +62,31 @@
       </div>
     </div>
 
+    <!-- Stops Filter -->
     <div class="filter-stop">
-      <span class="filter">Stops</span>
+      <span class="filter">{{ "STOPS" | translate }}</span>
       <div>
-        <label style="color: #878787; font-size: 16px">Select an option:</label>
+        <label style="color: #878787; font-size: 16px"
+          >{{ "SELECTANOPTION" | translate }}:</label
+        >
         <mat-radio-group
           [(ngModel)]="stopSelectedOption"
           (change)="onStopChange()"
         >
           <mat-radio-button *ngFor="let option of stopOptions" [value]="option">
-            {{ option }}
+            {{ option | translate }}
           </mat-radio-button>
         </mat-radio-group>
       </div>
     </div>
 
+    <!-- Refundable Filter -->
     <div class="filter-refundable">
-      <span class="filter">Refundable</span>
+      <span class="filter">{{ "REFUNDABLE" | translate }}</span>
       <div>
-        <label style="color: #878787; font-size: 16px">Select an option:</label>
+        <label style="color: #878787; font-size: 16px"
+          >{{ "SELECTANOPTION" | translate }}:</label
+        >
         <mat-radio-group
           [(ngModel)]="refundableSelectedOption"
           (change)="onRefundableChange()"
@@ -85,7 +95,7 @@
             *ngFor="let option of refundableOptions"
             [value]="option"
           >
-            {{ option }}
+            {{ option | translate }}
           </mat-radio-button>
         </mat-radio-group>
       </div>

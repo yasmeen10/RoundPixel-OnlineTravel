@@ -12,7 +12,6 @@ export class BookingBtnComponent {
   constructor(private dialog: MatDialog, private router: Router) {}
 
   openSuccessPopUp() {
-    console.log('hello');
     const dialog = this.dialog.open(PopupComponent, {
       data: { text: 'Added Successfully' },
     });

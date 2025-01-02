@@ -12,8 +12,6 @@ export class PopupComponent {
     @Inject(MAT_DIALOG_DATA) public data: { text: string }
   ) {}
 
-  text = 'Booking Successfully';
-
   closePopUp() {
     this.dialogRef.close();
   }
